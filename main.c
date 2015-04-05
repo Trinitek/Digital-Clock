@@ -56,7 +56,7 @@ void initIO(void) {
 }
 
 void initOscillator(void) {
-    OSCCONbits.IRCF = 0b1100;   // 2 MHz CPU clock
+    OSCCONbits.IRCF = 0b1110;   // 8 MHz CPU clock
 }
 
 void initTimer(void) {
@@ -185,7 +185,7 @@ void main(void) {
         /* Check for button input */
         // all buttons are active low
         if (TMR0 >= (unsigned) 192) {
-            if (oldButtonS == 0 && _button_s == 1) incrementSeconds();
+            if (oldButtonS == 0 && _button_s == 1) second = 0;
             if (oldButtonM == 0 && _button_m == 1) incrementMinutes();
             if (oldButtonH == 0 && _button_h == 1) incrementHours();
 
